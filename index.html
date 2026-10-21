@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>For Eman 💖</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Comic Sans MS', cursive; }
+  body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ffafbd, #ffc3a0, #ff9a9e, #fad0c4);
+    background-size: 400% 400%;
+    animation: gradient 10s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+  }
+  @keyframes gradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+  .page {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 30px;
+    box-shadow: 0 20px 50px rgba(255, 105, 135, 0.4);
+    max-width: 600px;
+    animation: pop 0.6s ease;
+  }
+  .page.active { display: block; }
+  @keyframes pop {
+    0% { transform: scale(0.5); opacity: 0; }
+    100% { transform: scale(1); opacity: 1; }
+  }
+  h1 {
+    font-size: 2.5em;
+    color: #d6336c;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 0 #fff;
+  }
+  h2 {
+    font-size: 1.8em;
+    color: #e64980;
+    margin: 20px 0;
+  }
+  p {
+    font-size: 1.3em;
+    color: #555;
+    margin: 15px 0;
+  }
+  button {
+    padding: 15px 35px;
+    font-size: 1.2em;
+    margin: 10px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  }
+  .yes-btn {
+    background: linear-gradient(45deg, #ff6b9d, #ff4081);
+    color: white;
+  }
+  .no-btn {
+    background: linear-gradient(45deg, #a8a8a8, #757575);
+    color: white;
+  }
+  button:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+  }
+  .heart {
+    position: absolute;
+    font-size: 2em;
+    animation: float 6s linear infinite;
+    pointer-events: none;
+  }
+  @keyframes float {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+  }
+  .big-emoji { font-size: 4em; margin: 20px; }
+</style>
+</head>
+<body>
+
+<!-- PAGE 1 -->
+<div class="page active" id="page1">
+  <h1>HIII I LOVE YOU EMAN!!!!!! 💘</h1>
+  <h2>DO YOU LOVE ME?? 🥺</h2>
+  <button class="yes-btn" onclick="showPage('page2')">YES I DO 💖</button>
+  <button class="no-btn" onclick="showPage('page3')">NO 😢</button>
+</div>
+
+<!-- PAGE 2 (YES) -->
+<div class="page" id="page2">
+  <div class="big-emoji">💖💖💖</div>
+  <h1>YAYYAYAYAYYA!!! </h1>
+  <h2>I ALWAYS KNEWWW!!!</h2>
+  <p>I LOVE YOU MORE 💞</p>
+  <p>FOREVER AND EVER</p>
+  <p>AND EVERR AND EVERRRRR 💕</p>
+  <div class="big-emoji">🥰💘🥰</div>
+</div>
+
+<!-- PAGE 3 (NO - first) -->
+<div class="page" id="page3">
+  <h1>ARE U SURE?? </h1>
+  <div class="big-emoji">😔</div>
+  <button class="yes-btn" onclick="showPage('page4')">YES</button>
+</div>
+
+<!-- PAGE 4 (NO - second) -->
+<div class="page" id="page4">
+  <h1>THINK AGAIN ARE U SUREEEEEEE EMAN??? 🥹</h1>
+  <div class="big-emoji">💔</div>
+  <button class="yes-btn" onclick="showPage('page5')">YES</button>
+</div>
+
+<!-- PAGE 5 (NO - third) -->
+<div class="page" id="page5">
+  <h1>THINK ABT IT AGAIN YAR EMAN</h1>
+  <h2>ARE U SURE U WANT TO MAKE ME SADD AND U DONT LOVE ME 😭</h2>
+  <div class="big-emoji">😢💔😭</div>
+  <button class="yes-btn" onclick="showPage('page6')">OKAY I LOVE YOU 💖</button>
+  <button class="no-btn" onclick="showPage('page7')">NO STILL A NO</button>
+</div>
+
+<!-- PAGE 6 (finally yes) -->
+<div class="page" id="page6">
+  <div class="big-emoji">💖💖💖💖💖</div>
+  <h1>YAYAYAYAYAYYAYAYAYAYAYAYAYAYAYAY!!! 🎊</h1>
+  <h2>I ALWAYS KNEWWWWW 🥰</h2>
+  <p>FOREVER YOURS 💞</p>
+  <div class="big-emoji">🥰💘🥰💘🥰</div>
+</div>
+
+<!-- PAGE 7 (still no) -->
+<div class="page" id="page7">
+  <h1>oh ok im sad now </h1>
+  <div class="big-emoji">😢💔😢💔😢</div>
+  <p>you broke my heart...</p>
+  <div class="big-emoji">😞</div>
+</div>
+
+<script>
+  function showPage(id) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    // burst of hearts on happy pages
+    if (id === 'page2' || id === 'page6') {
+      for (let i = 0; i < 20; i++) setTimeout(makeHeart, i * 100);
+    }
+  }
+
+  function makeHeart() {
+    const heart = document.createElement('div');
+    heart.className = 'heart';
+    heart.innerHTML = ['💖','💕','💘','💗','❤️','🌸'][Math.floor(Math.random()*6)];
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 6000);
+  }
+
+  // ambient hearts
+  setInterval(makeHeart, 800);
+</script>
+
+</body>
+</html>
